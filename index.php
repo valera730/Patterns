@@ -1,4 +1,4 @@
-<?php//
+<?php//**
 class ClassOne{
 	public function sayHelloOne(){
 		echo "Привет от ".__CLASS__."!";
