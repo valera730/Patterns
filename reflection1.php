@@ -1,35 +1,35 @@
 <?php
 class ClassOne{
 	public function sayHelloOne(){
-		echo "Ïðèâåò îò ".__CLASS__."!";
+		echo "ÃÃ°Ã¨Ã¢Ã¥Ã² Ã®Ã² ".__CLASS__."!";
 	}
 }
 class ClassTwo{
 	public function sayHelloTwo(){
-		echo "Ïðèâåò îò ".__CLASS__."!";
+		echo "ÃÃ°Ã¨Ã¢Ã¥Ã² Ã®Ã² ".__CLASS__."!";
 	}
 }
 class ClassThree{
 	public function sayHelloThree(){
-		echo "Ïðèâåò îò ".__CLASS__."!";
+		echo "ÃÃ°Ã¨Ã¢Ã¥Ã² Ã®Ã² ".__CLASS__."!";
 	}
 }
 class ClassDelegator{
 	private $list;
 	function __construct(){
-		//Ýêçåìïëÿð êëàññà ïî óìîë÷àíèþ
+		//ÃÃªÃ§Ã¥Ã¬Ã¯Ã«Ã¿Ã° ÃªÃ«Ã Ã±Ã±Ã  Ã¯Ã® Ã³Ã¬Ã®Ã«Ã·Ã Ã­Ã¨Ã¾
 		$this->list[] = new stdClass();
 	}
 	function addObject($obj){
-		//Äîáàâëåíèå îáúåêòà â ñïèñîê
+		//Ã„Ã®Ã¡Ã Ã¢Ã«Ã¥Ã­Ã¨Ã¥ Ã®Ã¡ÃºÃ¥ÃªÃ²Ã  Ã¢ Ã±Ã¯Ã¨Ã±Ã®Ãª
 		$this->list[] = $obj;
 	}
 	function __call($name, $args){
-		//Ïåðåáèðàåì ñïèñîê
+		//ÃÃ¥Ã°Ã¥Ã¡Ã¨Ã°Ã Ã¥Ã¬ Ã±Ã¯Ã¨Ã±Ã®Ãª
 		foreach($this->list as $obj){
-			//Ïîëó÷àåì îïèñàíèå êëàññà
+			//ÃÃ®Ã«Ã³Ã·Ã Ã¥Ã¬ Ã®Ã¯Ã¨Ã±Ã Ã­Ã¨Ã¥ ÃªÃ«Ã Ã±Ã±Ã 
 			$r = new ReflectionClass($obj);
-			//Åñòü íóæíûé íàì ìåòîä?
+			//Ã…Ã±Ã²Ã¼ Ã­Ã³Ã¦Ã­Ã»Ã© Ã­Ã Ã¬ Ã¬Ã¥Ã²Ã®Ã¤?
 			if($r->hasMethod($name)){
                 $method = $r->getMethod($name);
 				if($method->isPublic() && !$method->isAbstract()){
